@@ -9,27 +9,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Entity
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Table(name="students")
+@Entity
 public class Student {
 	
 	@Id
@@ -45,7 +42,6 @@ public class Student {
 	private String lastname;
 	
 	@NotNull
-	@Size(max = 15)
 	private Long mobileno;
 	
 	@NotNull
@@ -54,8 +50,7 @@ public class Student {
 	private String email;
 	
 	@OneToMany(targetEntity = Project.class,cascade = CascadeType.ALL)
-	@JoinColumn(name="project_id", referencedColumnName = "id")
-	@OnDelete(action = OnDeleteAction.CASCADE)
-	private List<Project> project;
+	@JoinColumn(name="sp_fk", referencedColumnName = "id")
+	private List<Project> projects;
 
 }
