@@ -10,4 +10,5 @@ public class Poc2Application {
 		SpringApplication.run(Poc2Application.class, args);
 	}
 
+
 }
