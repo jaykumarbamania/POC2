@@ -46,11 +46,15 @@ public class Student {
 	
 	@NotNull
 	@Size(max = 65)
+	private String password;
+	
+	@NotNull
+	@Size(max = 65)
 	@Column(unique = true)
 	private String email;
 	
 	@OneToMany(targetEntity = Project.class,cascade = CascadeType.ALL)
-	@JoinColumn(name="sp_fk", referencedColumnName = "id")
+	@JoinColumn(name="fk_stuid", referencedColumnName = "id")
 	private List<Project> projects;
 
 }
